@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="monthForm">
+        <label for="month">Elige un mes:</label>
+        <select id="month" name="month" required>
+            <option value="">Seleccione...</option>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        <button type="button" onclick="showMonthName()">Mostrar</button>
+    </form>
+    <div id="monthResult"></div>
+    <script src="script.js"></script>
+</body>
+</html>
