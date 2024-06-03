@@ -1,22 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 3</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ejercicio 3 - Clasificación de Triángulos</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FFFFE0; /* Amarillo claro */
+        }
+        .card {
+            margin: 10px;
+            text-align: center;
+        }
+        .btn-orange {
+            background-color: #FFA07A; /* Naranja clarito */
+            border-color: #FFA07A; /* Naranja clarito */
+        }
+        .btn-orange:hover {
+            background-color: #FF7F50; /* Naranja más oscuro para el hover */
+            border-color: #FF7F50; /* Naranja más oscuro para el hover */
+        }
+    </style>
 </head>
 <body>
-    <form id="triangleForm">
-        <label for="sideA">Lado A:</label>
-        <input type="number" id="sideA" name="sideA" required>
-        <label for="sideB">Lado B:</label>
-        <input type="number" id="sideB" name="sideB" required>
-        <label for="sideC">Lado C:</label>
-        <input type="number" id="sideC" name="sideC" required>
-        <button type="button" onclick="classifyTriangle()">Calcular</button>
-    </form>
-    <div id="triangleResult"></div>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1 class="text-center my-4">Ejercicio 3 - Clasificación de Triángulos</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ingresa los lados del triángulo</h5>
+                        <input type="number" id="sideA" class="form-control mb-3" placeholder="Lado A">
+                        <input type="number" id="sideB" class="form-control mb-3" placeholder="Lado B">
+                        <input type="number" id="sideC" class="form-control mb-3" placeholder="Lado C">
+                        <button onclick="classifyTriangle()" class="btn btn-orange">Clasificar Triángulo</button>
+                        <div id="triangleResult" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function classifyTriangle() {
+            const sideA = parseFloat(document.getElementById('sideA').value);
+            const sideB = parseFloat(document.getElementById('sideB').value);
+            const sideC = parseFloat(document.getElementById('sideC').value);
+
+            let result;
+
+            if (sideA === sideB && sideB === sideC) {
+                result = "El triángulo es equilátero";
+            } else if (sideA === sideB || sideA === sideC || sideB === sideC) {
+                result = "El triángulo es isósceles";
+            } else {
+                result = "El triángulo es escaleno";
+            }
+
+            document.getElementById('triangleResult').innerHTML = result;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

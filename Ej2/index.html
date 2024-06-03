@@ -1,18 +1,60 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 2</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ejercicio 2 - Calcular Circunferencia, Área y Volumen</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FFFFE0; /* Amarillo claro */
+        }
+        .card {
+            margin: 10px;
+            text-align: center;
+        }
+        .btn-orange {
+            background-color: #FFA07A; /* Naranja clarito */
+            border-color: #FFA07A; /* Naranja clarito */
+        }
+        .btn-orange:hover {
+            background-color: #FF7F50; /* Naranja más oscuro para el hover */
+            border-color: #FF7F50; /* Naranja más oscuro para el hover */
+        }
+    </style>
 </head>
 <body>
-    <form id="circleForm">
-        <label for="radius">Radio de la circunferencia:</label>
-        <input type="number" id="radius" name="radius" required>
-        <button type="button" onclick="calculateCircle()">Calcular</button>
-    </form>
-    <div id="results"></div>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1 class="text-center my-4">Ejercicio 2 - Calcular Circunferencia, Área y Volumen</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ingresa el radio de la circunferencia</h5>
+                        <input type="number" id="radius" class="form-control mb-3" placeholder="Radio">
+                        <button onclick="calculateCircle()" class="btn btn-orange">Calcular</button>
+                        <div id="results" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateCircle() {
+            const radius = document.getElementById('radius').value;
+            const circumference = 2 * Math.PI * radius;
+            const area = Math.PI * Math.pow(radius, 2);
+            const volume = (4/3) * Math.PI * Math.pow(radius, 3);
+
+            document.getElementById('results').innerHTML = `
+                <p>Longitud de la circunferencia: ${circumference.toFixed(2)}</p>
+                <p>Área del círculo: ${area.toFixed(2)}</p>
+                <p>Volumen de la esfera: ${volume.toFixed(2)}</p>
+            `;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

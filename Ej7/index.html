@@ -1,20 +1,63 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 7</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ejercicio 7 - División Euclidiana</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FFFFE0; /* Amarillo claro */
+        }
+        .card {
+            margin: 10px;
+            text-align: center;
+        }
+        .btn-orange {
+            background-color: #FFA07A; /* Naranja clarito */
+            border-color: #FFA07A; /* Naranja clarito */
+        }
+        .btn-orange:hover {
+            background-color: #FF7F50; /* Naranja más oscuro para el hover */
+            border-color: #FF7F50; /* Naranja más oscuro para el hover */
+        }
+    </style>
 </head>
 <body>
-    <form id="euclideanForm">
-        <label for="number1">Número 1:</label>
-        <input type="number" id="number1" name="number1" required>
-        <label for="number2">Número 2:</label>
-        <input type="number" id="number2" name="number2" required>
-        <button type="button" onclick="euclideanDivision()">Calcular</button>
-    </form>
-    <div id="euclideanResult"></div>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1 class="text-center my-4">Ejercicio 7 - División Euclidiana</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ingresa dos números enteros positivos</h5>
+                        <input type="number" id="number1" class="form-control mb-3" placeholder="Número 1">
+                        <input type="number" id="number2" class="form-control mb-3" placeholder="Número 2">
+                        <button onclick="euclideanDivision()" class="btn btn-orange">Calcular</button>
+                        <div id="euclideanResult" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function euclideanDivision() {
+            const number1 = parseInt(document.getElementById('number1').value);
+            const number2 = parseInt(document.getElementById('number2').value);
+
+            if (number1 <= 0 || number2 <= 0) {
+                document.getElementById('euclideanResult').innerHTML = 'Introduce números enteros positivos.';
+                return;
+            }
+
+            const quotient = Math.floor(number1 / number2);
+            const remainder = number1 % number2;
+
+            document.getElementById('euclideanResult').innerHTML = `Cociente: ${quotient}, Resto: ${remainder}`;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
