@@ -43,12 +43,25 @@
     </div>
     <script>
         function classifyTriangle() {
-            const sideA = parseFloat(document.getElementById('sideA').value);
-            const sideB = parseFloat(document.getElementById('sideB').value);
-            const sideC = parseFloat(document.getElementById('sideC').value);
+            const sideAInput = document.getElementById('sideA');
+            const sideBInput = document.getElementById('sideB');
+            const sideCInput = document.getElementById('sideC');
+
+            const sideA = parseFloat(sideAInput.value);
+            const sideB = parseFloat(sideBInput.value);
+            const sideC = parseFloat(sideCInput.value);
+
+            if (!sideA || !sideB || !sideC) {
+                document.getElementById('triangleResult').innerHTML = 'Todos los campos deben ser rellenados.';
+                return;
+            }
+
+            if (isNaN(sideA) || isNaN(sideB) || isNaN(sideC) || sideA <= 0 || sideB <= 0 || sideC <= 0) {
+                document.getElementById('triangleResult').innerHTML = 'Por favor, introduce números válidos mayores que 0.';
+                return;
+            }
 
             let result;
-
             if (sideA === sideB && sideB === sideC) {
                 result = "El triángulo es equilátero";
             } else if (sideA === sideB || sideA === sideC || sideB === sideC) {

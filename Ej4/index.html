@@ -31,7 +31,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Ingresa tu número de DNI</h5>
-                        <input type="number" id="dni" class="form-control mb-3" placeholder="Número de DNI">
+                        <input type="text" id="dni" class="form-control mb-3" placeholder="Número de DNI">
                         <button onclick="calculateDNILetter()" class="btn btn-orange">Calcular Letra</button>
                         <div id="dniResult" class="mt-3"></div>
                     </div>
@@ -41,8 +41,15 @@
     </div>
     <script>
         function calculateDNILetter() {
-            const dni = document.getElementById('dni').value;
+            const dniInput = document.getElementById('dni');
+            const dni = dniInput.value;
             const letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+            if (!dni) {
+                document.getElementById('dniResult').innerHTML = 'El campo DNI debe ser rellenado.';
+                return;
+            }
+
             if (/^\d{7,8}$/.test(dni)) {
                 const letter = letters.charAt(dni % 23);
                 document.getElementById('dniResult').innerHTML = `La letra de tu DNI es: ${letter}`;
@@ -53,6 +60,6 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

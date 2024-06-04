@@ -42,13 +42,20 @@
     <script>
         function showMonthName() {
             const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-            const monthNumber = parseInt(document.getElementById('monthNumber').value);
+            const monthNumberInput = document.getElementById('monthNumber');
+            const monthNumber = parseInt(monthNumberInput.value);
 
-            if (monthNumber >= 1 && monthNumber <= 12) {
-                document.getElementById('monthResult').innerHTML = `El mes seleccionado es: ${months[monthNumber - 1]}`;
-            } else {
-                document.getElementById('monthResult').innerHTML = 'Por favor, ingresa un número válido del 1 al 12.';
+            if (!monthNumberInput.value) {
+                document.getElementById('monthResult').innerHTML = 'El campo debe ser rellenado.';
+                return;
             }
+
+            if (isNaN(monthNumber) || monthNumber < 1 || monthNumber > 12) {
+                document.getElementById('monthResult').innerHTML = 'Por favor, ingresa un número válido del 1 al 12.';
+                return;
+            }
+
+            document.getElementById('monthResult').innerHTML = `El mes seleccionado es: ${months[monthNumber - 1]}`;
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -41,7 +41,13 @@
     </div>
     <script>
         function checkString() {
-            const inputString = document.getElementById('inputString').value;
+            const inputString = document.getElementById('inputString').value.trim();
+
+            if (!inputString) {
+                document.getElementById('stringResult').innerHTML = 'El campo de texto no puede estar vacío.';
+                return;
+            }
+
             if (inputString === inputString.toUpperCase()) {
                 document.getElementById('stringResult').innerHTML = 'La cadena está en mayúsculas.';
             } else if (inputString === inputString.toLowerCase()) {

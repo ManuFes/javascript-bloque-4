@@ -45,7 +45,12 @@
             let a = parseInt(document.getElementById('number1').value);
             let b = parseInt(document.getElementById('number2').value);
 
-            if (a <= 0 || b <= 0) {
+            if (!a || !b) {
+                document.getElementById('gcdResult').innerHTML = 'Todos los campos deben ser rellenados.';
+                return;
+            }
+
+            if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
                 document.getElementById('gcdResult').innerHTML = 'Introduce números enteros positivos.';
                 return;
             }

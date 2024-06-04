@@ -41,10 +41,16 @@
     </div>
     <script>
         function checkPalindrome() {
-            const input = document.getElementById('inputPalindrome').value;
+            const input = document.getElementById('inputPalindrome').value.trim();
+
+            if (!input) {
+                document.getElementById('palindromeResult').innerHTML = 'El campo de texto no puede estar vacío.';
+                return;
+            }
+
             const normalizedInput = input.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
             const reversedInput = normalizedInput.split('').reverse().join('');
-            
+
             if (normalizedInput === reversedInput) {
                 document.getElementById('palindromeResult').innerHTML = 'La cadena es un palíndromo.';
             } else {
